@@ -1,6 +1,6 @@
 ﻿Module Jeu
     Private nbRangees As Integer = 8
-    Private nbMines As Integer = 1
+    Private nbMines As Integer = 10
     Private grille(nbRangees - 1, nbRangees - 1) As Integer
     Private casesDecouvertes(nbRangees - 1, nbRangees - 1) As Boolean
 
@@ -14,7 +14,7 @@
         VBMath.Randomize()
         Dim xAleatoire As Integer = CInt(VBMath.Rnd() * (nbRangees - 1))
         Dim yAleatoire As Integer = CInt(VBMath.Rnd() * (nbRangees - 1))
-        For i As Integer = 0 To nbMines
+        For i As Integer = 0 To nbMines - 1
             Do While grille(xAleatoire, yAleatoire) = -1
                 xAleatoire = CInt(VBMath.Rnd() * (nbRangees - 1))
                 yAleatoire = CInt(VBMath.Rnd() * (nbRangees - 1))
@@ -74,6 +74,14 @@
         Return retour
     End Function
 
+    Private Function getXFromIndex(index As Integer)
+        Return index \ nbRangees
+    End Function
+
+    Private Function getYFromIndex(index As Integer)
+        Return index Mod nbRangees
+    End Function
+
     Public Function getNbRangees() As Integer
         Return nbRangees
     End Function
@@ -82,8 +90,12 @@
         Return nbMines
     End Function
 
-    Public Function getGrilleI(i As Integer, j As Integer) As Integer
-        Return grille(i, j)
+    Public Function getGrilleI(index As Integer) As Integer
+        Return grille(getXFromIndex(index), getYFromIndex(index))
+    End Function
+
+    Public Function getCaseEstDecouvert(index As Integer) As Integer
+        Return casesDecouvertes(getXFromIndex(index), getYFromIndex(index))
     End Function
 
 End Module

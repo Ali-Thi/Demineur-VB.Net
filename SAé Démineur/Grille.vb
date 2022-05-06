@@ -4,10 +4,14 @@
     Private tempsRestant As Integer = tempsInitial
     Private labelTimer As New Label
     Private nbRangees As Integer = Jeu.getNbRangees()
-    Private tailleBouton As Integer = 50
-    Private espacement As Integer = 10
+    Private couleurBoutonInitial As Color = Color.DarkGray
+    Private couleurBoutonClique As Color = Color.LightGray
 
     Private Sub Form_Load() Handles Me.Load
+        Dim tailleBouton As Integer = 50
+        Dim espacement As Integer = 10
+
+
         Dim posXOrigin As Integer = espacement
         Dim posYOrigin As Integer = espacement
         Dim posX As Integer = posXOrigin
@@ -56,7 +60,7 @@
                     .Name = "Button" & Str(i * nbRangees + j + 1)
                     .Size = New Drawing.Size(tailleBouton, tailleBouton)
                     .Location = New Point(posX, posY)
-                    .BackColor = Color.DarkGray
+                    .BackColor = couleurBoutonInitial
                 End With
 
                 'With lbl
@@ -82,24 +86,25 @@
     Private Sub Button_Click(sender As Button, e As EventArgs)
         Dim casesADecouvrir() As Integer = Jeu.boutonClick(GroupBox1.Controls.IndexOf(sender))
         If (casesADecouvrir IsNot Nothing) Then
-            If (casesADecouvrir(0) = 1) Then
+            If (casesADecouvrir(0) = 0) Then
                 For i As Integer = 1 To casesADecouvrir.Length - 1
                     With GroupBox1.Controls(casesADecouvrir(i))
-                        Console.WriteLine(1)
-                        .Text = Jeu.getGrilleI(casesADecouvrir(i) \ nbRangees, casesADecouvrir(i) Mod nbRangees)
-                        .Font = New Font(.Font.FontFamily, tailleBouton \ 2, FontStyle.Bold, .Font.Unit)
-                        .BackColor = Color.LightGray
+                        If (Jeu.getGrilleI(casesADecouvrir(i) \ nbRangees, casesADecouvrir(i) Mod nbRangees) > 0) Then
+                            .Text = Jeu.getGrilleI(casesADecouvrir(i) \ nbRangees, casesADecouvrir(i) Mod nbRangees)
+                        End If
+                        .Font = New Font(.Font.FontFamily, .Width \ 2, FontStyle.Bold, .Font.Unit)
+                        .BackColor = couleurBoutonClique
                     End With
                 Next
             Else
                 sender.BackColor = Color.Red
                 For i As Integer = 1 To casesADecouvrir.Length - 1
-                    Console.WriteLine(casesADecouvrir(i))
                     With GroupBox1.Controls(casesADecouvrir(i))
                         .Text = "B"
-                        .Font = New Font(.Font.FontFamily, tailleBouton \ 2, FontStyle.Bold, .Font.Unit)
+                        .Font = New Font(.Font.FontFamily, .Width \ 2, FontStyle.Bold, .Font.Unit)
                     End With
                 Next
+                Game_End()
             End If
         End If
         'For Each lbl In GroupBox1.Controls
@@ -118,9 +123,10 @@
 
     Private Sub Game_End()
         Me.Enabled = False
+        Timer1.Stop()
         Dim nbCaseDecouverte As Integer = 0
-        For Each btn In GroupBox1.Controls
-            If (TypeOf (btn) Is Button And btn.Text <> "") Then
+        For Each btn As Button In GroupBox1.Controls
+            If (btn.BackColor = couleurBoutonClique) Then
                 nbCaseDecouverte += 1
             End If
         Next
@@ -133,8 +139,22 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         tempsRestant -= 1
         labelTimer.Text = tempsRestant
+        Game_Is_Win()
         If (tempsRestant <= 0) Then
             Timer1.Stop()
+            Game_End()
+        End If
+    End Sub
+
+    Private Sub Game_Is_Win()
+        Dim isWin As Boolean = True
+        For Each btn As Button In GroupBox1.Controls
+            If (btn.BackColor = couleurBoutonInitial And Jeu.getGrilleI(GroupBox1.Controls.IndexOf(btn) \ nbRangees, GroupBox1.Controls.IndexOf(btn) Mod nbRangees) >= 0) Then
+                isWin = False
+            End If
+        Next
+
+        If (isWin) Then
             Game_End()
         End If
     End Sub

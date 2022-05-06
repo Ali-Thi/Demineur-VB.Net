@@ -35,37 +35,33 @@
     Public Function boutonClick(indexBouton As Integer) As Integer()
         Dim x As Integer = indexBouton \ nbRangees
         Dim y As Integer = indexBouton Mod nbRangees
-        Dim retour() As Integer
+        Dim retour() As Integer = {0, indexBouton}
         If (0 <= indexBouton < nbRangees * nbRangees) Then
             If (Not casesDecouvertes(x, y)) Then
                 casesDecouvertes(x, y) = True
+
                 If (grille(x, y) < 0) Then
-                    retour = {0}
+                    retour(0) = 1
                     For i As Integer = 0 To nbRangees - 1
                         For j As Integer = 0 To nbRangees - 1
-                            If (grille(i, j) < 0) Then
+                            If (grille(i, j) < 0 And i * nbRangees + j <> indexBouton) Then
                                 ReDim Preserve retour(retour.Length)
-                                retour.Append(i * nbRangees + j)
+                                retour(retour.Length - 1) = i * nbRangees + j
                                 casesDecouvertes(x, y) = True
                             End If
                         Next
                     Next
-                ElseIf (grille(x, y) > 0) Then
-                    retour = {1, indexBouton}
-                    casesDecouvertes(x, y) = True
-                Else
-                    retour = {1}
+                ElseIf (grille(x, y) = 0) Then
                     Dim retourRecursif() As Integer
                     For Each i As Integer In {x - 1, x, x + 1}
                         For Each j As Integer In {y - 1, y, y + 1}
                             If (j >= 0 And i >= 0 And j < nbRangees And i < nbRangees And Not (j = y And i = x)) Then
-                                ReDim Preserve retour(retour.Length)
-                                retour.Append(i * nbRangees + j)
                                 If (Not casesDecouvertes(i, j)) Then
                                     retourRecursif = boutonClick(i * nbRangees + j)
                                     If (retourRecursif IsNot Nothing) Then
                                         For k As Integer = 1 To retourRecursif.Length - 1
-                                            retour.Append(retourRecursif(k))
+                                            ReDim Preserve retour(retour.Length)
+                                            retour(retour.Length - 1) = (retourRecursif(k))
                                         Next
                                     End If
                                 End If
@@ -80,6 +76,10 @@
 
     Public Function getNbRangees() As Integer
         Return nbRangees
+    End Function
+
+    Public Function getNbMines() As Integer
+        Return nbMines
     End Function
 
     Public Function getGrilleI(i As Integer, j As Integer) As Integer

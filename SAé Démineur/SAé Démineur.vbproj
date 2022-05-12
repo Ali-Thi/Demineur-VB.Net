@@ -80,6 +80,7 @@
       <DependentUpon>Accueil.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Enregistrement.vb" />
     <Compile Include="Grille.Designer.vb">
       <DependentUpon>Grille.vb</DependentUpon>
     </Compile>

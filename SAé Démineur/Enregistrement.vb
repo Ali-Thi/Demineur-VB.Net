@@ -1,5 +1,6 @@
 ﻿Module Enregistrement
     Structure joueur
+        Dim nbj As Integer
         Dim prenom As String
         Dim mine As Integer
         Dim nbParti As Integer
@@ -22,11 +23,20 @@
     End Sub
 
 
-
     Public Function getListJ()
         Dim linesFromFile, nextLine As String
+        Dim Joueurs As joueur
+        linesFromFile = ""
+        Dim cmpteur As Integer = 0
         Do Until EOF(listJ)
             nextLine = LineInput(listJ)
+            Joueurs.nbj = nextLine
+            Joueurs.prenom = nextLine
+            Joueurs.mine = nextLine
+            Joueurs.nbParti = nextLine
+            Joueurs.temps = nextLine
+            listJoueur(cmpteur) = Joueurs
+            cmpteur += 1
         Loop
         Return listJoueur
     End Function

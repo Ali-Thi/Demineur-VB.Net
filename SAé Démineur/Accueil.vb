@@ -15,8 +15,23 @@
 
         If peutLancer Then
             Me.Hide()
+            If Not ComboBox1.Items.Contains(ComboBox1.Text) Then
+                ComboBox1.Items.Add(ComboBox1.Text)
+            End If
             Jeu.MakeProblem()
             Grille.Show()
         End If
+    End Sub
+
+    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For Each nom As String In Enregistrement.getNomsJoueur()
+            If Not nom Is Nothing Then
+                ComboBox1.Items.Add(nom)
+            End If
+        Next
+    End Sub
+
+    Private Sub Accueil_Close() Handles Me.Closed
+        Enregistrement.ajoutJoueur()
     End Sub
 End Class

@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{05619D14-9D99-40FF-B683-75C22AE88827}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>SAé_Démineur.My.MyApplication</StartupObject>
+    <StartupObject>SAé_Démineur.Enregistrement</StartupObject>
     <RootNamespace>SAé_Démineur</RootNamespace>
     <AssemblyName>SAé Démineur</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>

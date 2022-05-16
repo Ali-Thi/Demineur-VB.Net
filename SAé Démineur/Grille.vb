@@ -107,13 +107,14 @@
     Private Sub Game_End() Handles Button2.Click
         Me.Enabled = False
         Timer1.Stop()
-        Dim nbCaseDecouverte As Integer = 0
+        Dim nbCasesDecouvertes As Integer = 0
         For Each btn As Button In GroupBox1.Controls
             If (btn.BackColor = couleurBoutonClique Or btn.BackColor = couleurBoutonExplosion) Then
-                nbCaseDecouverte += 1
+                nbCasesDecouvertes += 1
             End If
         Next
-        If (MsgBox("Vous avez découvert" & Str(nbCaseDecouverte) & " cases en" & Str(tempsInitial - tempsRestant) & " secondes.", MsgBoxStyle.OkOnly, "Partie terminée") = MsgBoxResult.Ok) Then
+        If (MsgBox("Vous avez découvert" & Str(nbCasesDecouvertes) & " cases en" & Str(tempsInitial - tempsRestant) & " secondes.", MsgBoxStyle.OkOnly, "Partie terminée") = MsgBoxResult.Ok) Then
+            Enregistrement.Enregistrer(Accueil.ComboBox1.Text, nbCasesDecouvertes, tempsInitial - tempsRestant)
             Accueil.Show()
             Me.Close()
         End If
@@ -140,10 +141,6 @@
         If (isWin) Then
             Game_End()
         End If
-    End Sub
-
-    Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 
     Private Sub Pause(sender As Object, e As EventArgs) Handles Button1.Click

@@ -33,9 +33,11 @@ Partial Class Grille
         '
         'GroupBox1
         '
-        Me.GroupBox1.Location = New System.Drawing.Point(50, 50)
+        Me.GroupBox1.Location = New System.Drawing.Point(33, 32)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(600, 600)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(400, 390)
         Me.GroupBox1.TabIndex = 72
         Me.GroupBox1.TabStop = False
         '
@@ -46,9 +48,10 @@ Partial Class Grille
         'Button3
         '
         Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
-        Me.Button3.Location = New System.Drawing.Point(679, 450)
+        Me.Button3.Location = New System.Drawing.Point(453, 292)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(50, 50)
+        Me.Button3.Size = New System.Drawing.Size(33, 32)
         Me.Button3.TabIndex = 75
         Me.Button3.UseVisualStyleBackColor = True
         '
@@ -56,30 +59,33 @@ Partial Class Grille
         '
         Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
         Me.Button2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Button2.Location = New System.Drawing.Point(679, 325)
+        Me.Button2.Location = New System.Drawing.Point(453, 211)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(50, 50)
+        Me.Button2.Size = New System.Drawing.Size(33, 32)
         Me.Button2.TabIndex = 74
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button1
         '
         Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(679, 200)
+        Me.Button1.Location = New System.Drawing.Point(453, 130)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(50, 50)
+        Me.Button1.Size = New System.Drawing.Size(33, 32)
         Me.Button1.TabIndex = 73
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Grille
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(768, 694)
+        Me.ClientSize = New System.Drawing.Size(512, 451)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Grille"
         Me.Text = "Grille"
         Me.ResumeLayout(False)

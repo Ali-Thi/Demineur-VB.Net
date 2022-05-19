@@ -8,6 +8,7 @@
 
     Private numFile As String = FreeFile()
     Private listJoueur(0) As Joueur
+    Private idxj As Integer = 0
 
     Public Sub ajoutJoueur()
         FileOpen(numFile, "Enregistrement.txt", OpenMode.Output)
@@ -31,6 +32,7 @@
                     .nbParti += 1
                     .temps += _temps
                 End With
+                Idxj += 1
                 joueurExiste = True
             End If
         Next
@@ -51,6 +53,14 @@
             nomsJoueurs.Append(joueur.prenom)
         Next
         Return nomsJoueurs
+    End Function
+
+    Public Function getJoueur(i As Integer) As Joueur
+        Return listJoueur(i)
+    End Function
+
+    Public Function getIdxj()
+        Return idxj
     End Function
 
     Public Sub Main()

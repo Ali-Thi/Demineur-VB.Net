@@ -34,4 +34,11 @@
     Private Sub Accueil_Close() Handles Me.Closed
         Enregistrement.ajoutJoueur()
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Me.Hide()
+        Score.Show()
+    End Sub
+
+
 End Class

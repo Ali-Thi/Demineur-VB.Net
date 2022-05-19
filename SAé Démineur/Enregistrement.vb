@@ -1,4 +1,5 @@
 ﻿Module Enregistrement
+
     Structure Joueur
         Dim prenom As String
         Dim nbCasesDecouvertes As Integer
@@ -6,11 +7,12 @@
         Dim temps As Integer
     End Structure
 
-    Private numFile As String = FreeFile()
     Private listJoueur(0) As Joueur
     Private idxj As Integer = 0
+    Private numFile As String = FreeFile()
 
     Public Sub ajoutJoueur()
+
         FileOpen(numFile, "Enregistrement.txt", OpenMode.Output)
         WriteLine(numFile, listJoueur.Length)
         For Each joueur As Joueur In listJoueur
@@ -25,6 +27,7 @@
 
     Public Sub Enregistrer(_prenom As String, _nbCasesDecouvertes As Integer, _temps As Integer)
         Dim joueurExiste As Boolean = False
+        ReDim listJoueur(idxj + listJoueur.Length)
         For Each joueur In listJoueur
             If joueur.prenom = _prenom Then
                 With joueur
@@ -32,8 +35,9 @@
                     .nbParti += 1
                     .temps += _temps
                 End With
-                Idxj += 1
+                idxj += 1
                 joueurExiste = True
+
             End If
         Next
         If Not joueurExiste Then
@@ -44,6 +48,7 @@
                 .nbParti = 1
                 .temps = _temps
             End With
+            listJoueur(idxj) = joueur
         End If
     End Sub
 
@@ -58,7 +63,6 @@
     Public Function getJoueur(i As Integer) As Joueur
         Return listJoueur(i)
     End Function
-
     Public Function getIdxj()
         Return idxj
     End Function

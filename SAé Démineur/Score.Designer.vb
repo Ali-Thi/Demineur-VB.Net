@@ -104,6 +104,8 @@ Partial Class Score
         '
         'ComboBox1
         '
+        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(307, 378)
         Me.ComboBox1.Name = "ComboBox1"

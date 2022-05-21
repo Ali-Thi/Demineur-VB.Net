@@ -72,6 +72,7 @@
     End Sub
 
     Private Sub Button_Click(sender As Button, e As MouseEventArgs)
+        Console.WriteLine(e.Button)
         If e.Button = MouseButtons.Left Then
             Dim casesADecouvrir() As Integer = Jeu.boutonClick(GroupBox1.Controls.IndexOf(sender))
             If (casesADecouvrir IsNot Nothing) Then

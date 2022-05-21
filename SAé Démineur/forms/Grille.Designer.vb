@@ -46,6 +46,7 @@ Partial Class Grille
         'ReplayButton
         '
         Me.ReplayButton.BackgroundImage = CType(resources.GetObject("ReplayButton.BackgroundImage"), System.Drawing.Image)
+        Me.ReplayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ReplayButton.Location = New System.Drawing.Point(680, 449)
         Me.ReplayButton.Name = "ReplayButton"
         Me.ReplayButton.Size = New System.Drawing.Size(50, 49)
@@ -55,6 +56,7 @@ Partial Class Grille
         'ExitButton
         '
         Me.ExitButton.BackgroundImage = CType(resources.GetObject("ExitButton.BackgroundImage"), System.Drawing.Image)
+        Me.ExitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ExitButton.ForeColor = System.Drawing.SystemColors.ControlText
         Me.ExitButton.Location = New System.Drawing.Point(680, 325)
         Me.ExitButton.Name = "ExitButton"
@@ -65,6 +67,7 @@ Partial Class Grille
         'PauseButton
         '
         Me.PauseButton.BackgroundImage = CType(resources.GetObject("PauseButton.BackgroundImage"), System.Drawing.Image)
+        Me.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PauseButton.Location = New System.Drawing.Point(680, 200)
         Me.PauseButton.Name = "PauseButton"
         Me.PauseButton.Size = New System.Drawing.Size(50, 49)

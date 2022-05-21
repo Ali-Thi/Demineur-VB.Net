@@ -38,7 +38,6 @@ Module Enregistrement
 
         For i As Integer = 0 To listJoueur.Length - 1
             If listJoueur(i).prenom = _prenom Then
-                Console.WriteLine(1)
                 With listJoueur(i)
                     .nbCasesDecouvertes += _nbCasesDecouvertes
                     .nbParti += 1

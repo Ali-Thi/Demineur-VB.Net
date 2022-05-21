@@ -1,11 +1,11 @@
 ﻿Public Class Accueil
-    Private Sub Quitter(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Quitter(sender As Object, e As EventArgs) Handles LeaveButton.Click
         If (MsgBox("Voulez-vous quitter l'application ?", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.Yes) Then
             Close()
         End If
     End Sub
 
-    Private Sub Jouer(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Jouer(sender As Object, e As EventArgs) Handles PlayButton.Click
         Dim peutLancer As Boolean = True
         If (ComboBox1.Text.Length < 3) Then
             Label1.ForeColor = Color.Red
@@ -36,10 +36,13 @@
         Enregistrement.ajoutJoueur()
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ScoreButton.Click
         Me.Hide()
         Score.Show()
     End Sub
 
-
+    Private Sub OptionsButton_Click(sender As Object, e As EventArgs) Handles OptionsButton.Click
+        Me.Hide()
+        Options.Show()
+    End Sub
 End Class

@@ -39,6 +39,10 @@
             .Location = New Point(Me.Width \ 2 + labelTempsRestant.Width \ 2, 10)
         End With
 
+        PauseButton.BackgroundImage = New Bitmap(PauseButton.BackgroundImage, PauseButton.Size)
+        ExitButton.BackgroundImage = New Bitmap(ExitButton.BackgroundImage, ExitButton.Size)
+        ReplayButton.BackgroundImage = New Bitmap(ReplayButton.BackgroundImage, ReplayButton.Size)
+
         'Me.Size = New Drawing.Size(GroupBox1.Width + 10 * espacement, GroupBox1.Width + 10 * espacement)
 
         For i As Integer = 0 To nbRangees - 1
@@ -68,7 +72,7 @@
     End Sub
 
     Private Sub Button_Click(sender As Button, e As MouseEventArgs)
-        If (e.Button = MouseButtons.Left) Then
+        If e.Button = MouseButtons.Left Then
             Dim casesADecouvrir() As Integer = Jeu.boutonClick(GroupBox1.Controls.IndexOf(sender))
             If (casesADecouvrir IsNot Nothing) Then
                 If (casesADecouvrir(0) = 0) Then
@@ -79,6 +83,7 @@
                             End If
                             .Font = New Font(.Font.FontFamily, .Width \ 2, FontStyle.Bold, .Font.Unit)
                             .BackColor = couleurBoutonClique
+                            .Enabled = False
                         End With
                     Next
                 Else
@@ -92,11 +97,11 @@
                     Game_End()
                 End If
             End If
-        ElseIf (e.Button = MouseButtons.Right) Then ' And Not Jeu.getCaseEstDecouvert(GroupBox1.Controls.IndexOf(sender))) Then
+        ElseIf e.Button = MouseButtons.Right Then
             Console.WriteLine(0)
             If (sender.BackgroundImage Is Nothing) Then
                 Console.WriteLine(1)
-                sender.BackgroundImage = My.Resources.drapeau
+                sender.BackgroundImage = New Bitmap(My.Resources.drapeau, sender.Size)
             Else
                 Console.WriteLine(2)
                 sender.BackgroundImage = Nothing
@@ -104,7 +109,7 @@
         End If
     End Sub
 
-    Private Sub Game_End() Handles Button2.Click
+    Private Sub Game_End() Handles ExitButton.Click
         Me.Enabled = False
         Timer1.Stop()
         Dim nbCasesDecouvertes As Integer = 0
@@ -114,7 +119,7 @@
             End If
         Next
         If (MsgBox("Vous avez découvert" & Str(nbCasesDecouvertes) & " cases en" & Str(tempsInitial - tempsRestant) & " secondes.", MsgBoxStyle.OkOnly, "Partie terminée") = MsgBoxResult.Ok) Then
-            Enregistrement.Enregistrer(Accueil.ComboBox1.Text, nbCasesDecouvertes, tempsInitial - tempsRestant)
+            Enregistrement.Enregistrer(Trim(StrConv(Accueil.ComboBox1.Text, vbProperCase)), nbCasesDecouvertes, tempsInitial - tempsRestant)
             Accueil.Show()
             Me.Close()
         End If
@@ -143,7 +148,7 @@
         End If
     End Sub
 
-    Private Sub Pause(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Pause(sender As Object, e As EventArgs) Handles PauseButton.Click
         If (GroupBox1.Enabled) Then
             GroupBox1.Enabled = False
             Timer1.Stop()
@@ -153,5 +158,11 @@
         End If
     End Sub
 
+    Private Sub ReplayButton_Click(sender As Object, e As EventArgs) Handles ReplayButton.Click
+        Form_Load()
+    End Sub
 
+    Private Sub Quit() Handles Me.Closed
+        Accueil.Show()
+    End Sub
 End Class

@@ -16,19 +16,20 @@
         If peutLancer Then
             Me.Hide()
             If Not ComboBox1.Items.Contains(ComboBox1.Text) Then
-                ComboBox1.Items.Add(ComboBox1.Text)
+                ComboBox1.Items.Add(Trim(StrConv(ComboBox1.Text, vbProperCase)))
             End If
             Jeu.MakeProblem()
             Grille.Show()
         End If
     End Sub
 
-    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For Each nom As String In Enregistrement.getNomsJoueur()
-            If Not nom Is Nothing Then
+    Private Sub Add_Players_Name(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim nomsJoueurs As String() = Enregistrement.getNomsJoueur()
+        If Not nomsJoueurs Is Nothing Then
+            For Each nom As String In Enregistrement.getNomsJoueur()
                 ComboBox1.Items.Add(nom)
-            End If
-        Next
+            Next
+        End If
     End Sub
 
     Private Sub Accueil_Close() Handles Me.Closed

@@ -73,21 +73,21 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accueil.vb">
+    <Compile Include="forms\Accueil.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Accueil.Designer.vb">
+    <Compile Include="forms\Accueil.Designer.vb">
       <DependentUpon>Accueil.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Enregistrement.vb" />
-    <Compile Include="Grille.Designer.vb">
+    <Compile Include="modules\Enregistrement.vb" />
+    <Compile Include="forms\Grille.Designer.vb">
       <DependentUpon>Grille.vb</DependentUpon>
     </Compile>
-    <Compile Include="Grille.vb">
+    <Compile Include="forms\Grille.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Jeu.vb" />
+    <Compile Include="modules\Jeu.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -104,24 +104,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Options.Designer.vb">
+    <Compile Include="forms\Options.Designer.vb">
       <DependentUpon>Options.vb</DependentUpon>
     </Compile>
-    <Compile Include="Options.vb">
+    <Compile Include="forms\Options.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Score.Designer.vb">
+    <Compile Include="forms\Score.Designer.vb">
       <DependentUpon>Score.vb</DependentUpon>
     </Compile>
-    <Compile Include="Score.vb">
+    <Compile Include="forms\Score.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Accueil.resx">
+    <EmbeddedResource Include="forms\Accueil.resx">
       <DependentUpon>Accueil.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Grille.resx">
+    <EmbeddedResource Include="forms\Grille.resx">
       <DependentUpon>Grille.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -130,10 +130,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Options.resx">
+    <EmbeddedResource Include="forms\Options.resx">
       <DependentUpon>Options.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Score.resx">
+    <EmbeddedResource Include="forms\Score.resx">
       <DependentUpon>Score.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

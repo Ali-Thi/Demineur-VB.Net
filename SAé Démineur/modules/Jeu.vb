@@ -1,10 +1,15 @@
 ﻿Module Jeu
-    Private nbRangees As Integer = 8
-    Private nbMines As Integer = 10
-    Private grille(nbRangees - 1, nbRangees - 1) As Integer
-    Private casesDecouvertes(nbRangees - 1, nbRangees - 1) As Boolean
+    Private nbRangees As Integer
+    Private nbMines As Integer
+    Private grille(0, 0) As Integer
+    Private casesDecouvertes(0, 0) As Boolean
 
     Public Sub MakeProblem()
+        nbRangees = Parametres.getNbRangees()
+        nbMines = Parametres.getNbMines()
+        ReDim grille(nbRangees - 1, nbRangees - 1)
+        ReDim casesDecouvertes(nbRangees - 1, nbRangees - 1)
+
         For i As Integer = 0 To nbRangees - 1
             For j As Integer = 0 To nbRangees - 1
                 grille(i, j) = 0

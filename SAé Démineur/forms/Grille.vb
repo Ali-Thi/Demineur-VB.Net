@@ -1,14 +1,18 @@
 ﻿Public Class Grille
 
-    Private tempsInitial As Integer = 60
-    Private tempsRestant As Integer = tempsInitial
+    Private tempsInitial As Integer
+    Private tempsRestant As Integer
     Private labelTimer As New Label
-    Private nbRangees As Integer = Jeu.getNbRangees()
+
+    Private nbRangees As Integer
     Private couleurBoutonInitial As Color = Color.DarkGray
     Private couleurBoutonClique As Color = Color.LightGray
     Private couleurBoutonExplosion As Color = Color.Red
 
     Private Sub Form_Load() Handles Me.Load
+        Jeu.MakeProblem()
+        nbRangees = Jeu.getNbRangees()
+
         Dim tailleBouton As Integer = GroupBox1.Width \ nbRangees
 
         Dim posXOrigin As Integer = 0
@@ -18,26 +22,34 @@
 
         GroupBox1.Size = New Drawing.Size(nbRangees * tailleBouton, nbRangees * tailleBouton)
 
-        Dim labelNomDuJoueur As New Label
-        Dim labelTempsRestant As New Label
-        Me.Controls.Add(labelNomDuJoueur)
-        Me.Controls.Add(labelTempsRestant)
-        Me.Controls.Add(labelTimer)
-        With labelTempsRestant
-            .Text = "Temps restant : "
-            .AutoSize = True
-            .Location = New Point(Me.Width \ 2 - labelTempsRestant.Width \ 2, 10)
-        End With
-        With labelNomDuJoueur
-            .Text = "Nom du joueur"
-            .AutoSize = True
-            .Location = New Point(Me.Width \ 2 - labelTempsRestant.Width \ 2 - labelNomDuJoueur.Width, 10)
-        End With
-        With labelTimer
-            .Text = tempsRestant
-            .AutoSize = True
-            .Location = New Point(Me.Width \ 2 + labelTempsRestant.Width \ 2, 10)
-        End With
+        If Parametres.getAvecChrono() Then
+            tempsInitial = Parametres.getTempsImpartis()
+            tempsRestant = tempsInitial
+            Dim labelNomDuJoueur As New Label
+            Dim labelTempsRestant As New Label
+            Me.Controls.Add(labelNomDuJoueur)
+            Me.Controls.Add(labelTempsRestant)
+            Me.Controls.Add(labelTimer)
+            With labelTempsRestant
+                .Text = "Temps restant : "
+                .AutoSize = True
+                .Location = New Point(Me.Width \ 2 - labelTempsRestant.Width \ 2, 10)
+            End With
+            With labelNomDuJoueur
+                .Text = "Nom du joueur"
+                .AutoSize = True
+                .Location = New Point(Me.Width \ 2 - labelTempsRestant.Width \ 2 - labelNomDuJoueur.Width, 10)
+            End With
+            With labelTimer
+                .Text = tempsRestant
+                .AutoSize = True
+                .Location = New Point(Me.Width \ 2 + labelTempsRestant.Width \ 2, 10)
+            End With
+            With Timer1
+                .Interval = 1000
+                .Start()
+            End With
+        End If
 
         PauseButton.BackgroundImage = New Bitmap(PauseButton.BackgroundImage, PauseButton.Size)
         ExitButton.BackgroundImage = New Bitmap(ExitButton.BackgroundImage, ExitButton.Size)
@@ -64,11 +76,6 @@
                 End With
             Next
         Next
-
-        With Timer1
-            .Interval = 1000
-            .Start()
-        End With
     End Sub
 
     Private Sub Button_Click(sender As Button, e As MouseEventArgs)
@@ -108,6 +115,7 @@
                 sender.BackgroundImage = Nothing
             End If
         End If
+        Game_Is_Win()
     End Sub
 
     Private Sub Game_End() Handles ExitButton.Click
@@ -119,7 +127,15 @@
                 nbCasesDecouvertes += 1
             End If
         Next
-        If (MsgBox("Vous avez découvert" & Str(nbCasesDecouvertes) & " cases en" & Str(tempsInitial - tempsRestant) & " secondes.", MsgBoxStyle.OkOnly, "Partie terminée") = MsgBoxResult.Ok) Then
+
+        Dim message As String
+        If Parametres.getAvecChrono() Then
+            message = "Vous avez découvert" & Str(nbCasesDecouvertes) & " cases en" & Str(tempsInitial - tempsRestant) & " secondes."
+        Else
+            message = "Partie teminée."
+        End If
+
+        If (MsgBox(message, MsgBoxStyle.OkOnly, "Partie terminée") = MsgBoxResult.Ok) Then
             Enregistrement.Enregistrer(Trim(StrConv(Accueil.ComboBox1.Text, vbProperCase)), nbCasesDecouvertes, tempsInitial - tempsRestant)
             Accueil.Show()
             Me.Close()
@@ -129,7 +145,6 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         tempsRestant -= 1
         labelTimer.Text = tempsRestant
-        Game_Is_Win()
         If (tempsRestant <= 0) Then
             Timer1.Stop()
             Game_End()

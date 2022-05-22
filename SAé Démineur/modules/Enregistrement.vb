@@ -15,7 +15,7 @@ Module Enregistrement
 
     Public Sub ajoutJoueur()
         If Not listJoueur Is Nothing Then
-            Dim file As New StreamWriter("Enregistrement.txt")
+            Dim file As New StreamWriter(Parametres.getScoresPath() + "Enregistrement.txt")
             file.WriteLine(listJoueur.Length)
             For Each joueur As Joueur In listJoueur
                 file.WriteLine(joueur.prenom)
@@ -69,7 +69,7 @@ Module Enregistrement
 
     Public Sub Main()
         Try
-            Dim file As New StreamReader("Enregistrement.txt")
+            Dim file As New StreamReader(Parametres.getScoresPath() + "Enregistrement.txt")
             ReDim listJoueur(file.ReadLine() - 1)
             For i As Integer = 0 To listJoueur.Length - 1
                 Dim joueur As Joueur

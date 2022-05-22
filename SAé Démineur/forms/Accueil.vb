@@ -23,7 +23,8 @@
         End If
     End Sub
 
-    Private Sub Add_Players_Name(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Parametres.Init()
         Dim nomsJoueurs As String() = Enregistrement.getNomsJoueur()
         If Not nomsJoueurs Is Nothing Then
             For Each nom As String In Enregistrement.getNomsJoueur()
@@ -34,6 +35,7 @@
 
     Private Sub Accueil_Close() Handles Me.Closed
         Enregistrement.ajoutJoueur()
+        Parametres.SaveOptions()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ScoreButton.Click

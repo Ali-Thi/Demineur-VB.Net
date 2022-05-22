@@ -24,9 +24,6 @@ Partial Class Options
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.TempsImpartis = New System.Windows.Forms.TextBox()
-        Me.NbMines = New System.Windows.Forms.TextBox()
-        Me.NbCases = New System.Windows.Forms.TextBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -39,16 +36,19 @@ Partial Class Options
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.NbCases = New System.Windows.Forms.Label()
+        Me.NbMines = New System.Windows.Forms.Label()
+        Me.TempsImpartis = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.CheckBox2)
         Me.GroupBox1.Controls.Add(Me.TempsImpartis)
         Me.GroupBox1.Controls.Add(Me.NbMines)
         Me.GroupBox1.Controls.Add(Me.NbCases)
+        Me.GroupBox1.Controls.Add(Me.CheckBox2)
         Me.GroupBox1.Controls.Add(Me.CheckBox1)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -72,30 +72,6 @@ Partial Class Options
         Me.CheckBox2.TabIndex = 11
         Me.CheckBox2.Text = "Dark Mode"
         Me.CheckBox2.UseVisualStyleBackColor = True
-        '
-        'TempsImpartis
-        '
-        Me.TempsImpartis.Location = New System.Drawing.Point(426, 252)
-        Me.TempsImpartis.Name = "TempsImpartis"
-        Me.TempsImpartis.Size = New System.Drawing.Size(46, 26)
-        Me.TempsImpartis.TabIndex = 10
-        Me.TempsImpartis.Text = "0"
-        '
-        'NbMines
-        '
-        Me.NbMines.Location = New System.Drawing.Point(426, 182)
-        Me.NbMines.Name = "NbMines"
-        Me.NbMines.Size = New System.Drawing.Size(46, 26)
-        Me.NbMines.TabIndex = 9
-        Me.NbMines.Text = "0"
-        '
-        'NbCases
-        '
-        Me.NbCases.Location = New System.Drawing.Point(426, 112)
-        Me.NbCases.Name = "NbCases"
-        Me.NbCases.Size = New System.Drawing.Size(46, 26)
-        Me.NbCases.TabIndex = 8
-        Me.NbCases.Text = "0"
         '
         'CheckBox1
         '
@@ -204,6 +180,33 @@ Partial Class Options
         Me.Button1.Text = "Valider"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'NbCases
+        '
+        Me.NbCases.AutoSize = True
+        Me.NbCases.Location = New System.Drawing.Point(422, 118)
+        Me.NbCases.Name = "NbCases"
+        Me.NbCases.Size = New System.Drawing.Size(18, 20)
+        Me.NbCases.TabIndex = 12
+        Me.NbCases.Text = "0"
+        '
+        'NbMines
+        '
+        Me.NbMines.AutoSize = True
+        Me.NbMines.Location = New System.Drawing.Point(422, 188)
+        Me.NbMines.Name = "NbMines"
+        Me.NbMines.Size = New System.Drawing.Size(18, 20)
+        Me.NbMines.TabIndex = 13
+        Me.NbMines.Text = "0"
+        '
+        'TempsImpartis
+        '
+        Me.TempsImpartis.AutoSize = True
+        Me.TempsImpartis.Location = New System.Drawing.Point(422, 258)
+        Me.TempsImpartis.Name = "TempsImpartis"
+        Me.TempsImpartis.Size = New System.Drawing.Size(18, 20)
+        Me.TempsImpartis.TabIndex = 14
+        Me.TempsImpartis.Text = "0"
+        '
         'Options
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -232,13 +235,13 @@ Partial Class Options
     Friend WithEvents TempsImpartisScrollBar As HScrollBar
     Friend WithEvents NbMinesScrollBar As HScrollBar
     Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents TempsImpartis As TextBox
-    Friend WithEvents NbMines As TextBox
-    Friend WithEvents NbCases As TextBox
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents ScoresPath As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents TempsImpartis As Label
+    Friend WithEvents NbMines As Label
+    Friend WithEvents NbCases As Label
 End Class

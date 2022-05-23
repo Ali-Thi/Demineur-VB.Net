@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="modules\Jeu.vb" />
     <Compile Include="modules\Parametres.vb" />
+    <Compile Include="modules\ScoreTri.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

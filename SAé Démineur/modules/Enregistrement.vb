@@ -11,7 +11,7 @@ Module Enregistrement
         Dim meilleurTemps As Integer
     End Structure
 
-    Private listJoueur() As Joueur
+    Private listJoueur As Joueur()
 
     Public Sub ajoutJoueur()
         If Not listJoueur Is Nothing Then
@@ -105,6 +105,9 @@ Module Enregistrement
         Return listJoueur(i)
     End Function
 
+    Public Function getListJ()
+        Return listJoueur
+    End Function
     Public Function getNbJoueur() As Integer
         If listJoueur Is Nothing Then
             Return 0

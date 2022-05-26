@@ -55,24 +55,24 @@ Module Parametres
         Return scoresPath
     End Function
 
-    Public Function setNbRangees(i As Integer)
+    Public Sub setNbRangees(i As Integer)
         nbRangees = i
-    End Function
+    End Sub
 
-    Public Function setNbMines(i As Integer)
+    Public Sub setNbMines(i As Integer)
         nbMines = i
-    End Function
+    End Sub
 
-    Public Function setTempsImpartis(i As Integer)
+    Public Sub setTempsImpartis(i As Integer)
         tempsImpartis = i
-    End Function
+    End Sub
 
-    Public Function setAvecChrono(i As Boolean)
+    Public Sub setAvecChrono(i As Boolean)
         avecChrono = i
-    End Function
+    End Sub
 
-    Public Function setScoresPath(i As String)
+    Public Sub setScoresPath(i As String)
         scoresPath = i
-    End Function
+    End Sub
 
 End Module

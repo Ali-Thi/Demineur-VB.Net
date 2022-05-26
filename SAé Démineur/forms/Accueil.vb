@@ -1,8 +1,29 @@
 ﻿Public Class Accueil
+    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Parametres.Init()
+        If Enregistrement.getNbJoueur > 0 Then
+            For Each nom As String In Enregistrement.getNomsJoueur()
+                ComboBox1.Items.Add(nom)
+            Next
+        End If
+        ComboBox1.Sorted = True
+    End Sub
+
+    Private Sub Accueil_Activated() Handles Me.Activated
+        Label1.ForeColor = Color.Black
+        Label2.Visible = False
+        ComboBox1.Text = ""
+    End Sub
+
     Private Sub Quitter(sender As Object, e As EventArgs) Handles LeaveButton.Click
         If (MsgBox("Voulez-vous quitter l'application ?", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.Yes) Then
             Close()
         End If
+    End Sub
+
+    Private Sub Accueil_Close() Handles Me.Closed
+        Enregistrement.Enregistrer()
+        Parametres.SaveOptions()
     End Sub
 
     Private Sub Jouer(sender As Object, e As EventArgs) Handles PlayButton.Click
@@ -18,27 +39,11 @@
             If Not ComboBox1.Items.Contains(ComboBox1.Text) Then
                 ComboBox1.Items.Add(Trim(StrConv(ComboBox1.Text, vbProperCase)))
             End If
-            Jeu.MakeProblem()
             Grille.Show()
         End If
     End Sub
 
-    Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Parametres.Init()
-        Dim nomsJoueurs As String() = Enregistrement.getNomsJoueur()
-        If Not nomsJoueurs Is Nothing Then
-            For Each nom As String In Enregistrement.getNomsJoueur()
-                ComboBox1.Items.Add(nom)
-            Next
-        End If
-    End Sub
-
-    Private Sub Accueil_Close() Handles Me.Closed
-        Enregistrement.ajoutJoueur()
-        Parametres.SaveOptions()
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ScoreButton.Click
+    Private Sub ScoreButton_Click(sender As Object, e As EventArgs) Handles ScoreButton.Click
         Me.Hide()
         Score.Show()
     End Sub

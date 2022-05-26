@@ -13,7 +13,7 @@ Module Enregistrement
 
     Private listJoueur As Joueur()
 
-    Public Sub ajoutJoueur()
+    Public Sub Enregistrer()
         If Not listJoueur Is Nothing Then
             Dim file As New StreamWriter(Parametres.getScoresPath() + "Enregistrement.txt")
             file.WriteLine(listJoueur.Length)
@@ -30,7 +30,7 @@ Module Enregistrement
     End Sub
 
 
-    Public Sub Enregistrer(_prenom As String, _nbCasesDecouvertes As Integer, _temps As Integer)
+    Public Sub AjoutResultatPartie(_prenom As String, _nbCasesDecouvertes As Integer, _temps As Integer)
         Dim joueurExiste As Boolean = False
         If listJoueur Is Nothing Then
             ReDim listJoueur(0)
@@ -42,7 +42,7 @@ Module Enregistrement
                     .nbCasesDecouvertes += _nbCasesDecouvertes
                     .nbParti += 1
                     .temps += _temps
-                    If _nbCasesDecouvertes > listJoueur(i).nbCasesDecouvertes Then
+                    If _nbCasesDecouvertes > listJoueur(i).meilleurNbCasesDecouvertes Then
                         .meilleurNbCasesDecouvertes = _nbCasesDecouvertes
                         .meilleurTemps = _temps
                     End If
@@ -51,9 +51,6 @@ Module Enregistrement
             End If
         Next
         If Not joueurExiste Then
-            If Not listJoueur(listJoueur.Length - 1).prenom Is Nothing Then
-                ReDim Preserve listJoueur(listJoueur.Length)
-            End If
             Dim joueur As Joueur
             With joueur
                 .prenom = _prenom
@@ -63,9 +60,38 @@ Module Enregistrement
                 .meilleurNbCasesDecouvertes = _nbCasesDecouvertes
                 .meilleurTemps = _temps
             End With
+
+
+            If Not listJoueur(0).prenom Is Nothing Then
+                ReDim Preserve listJoueur(listJoueur.Length)
+            End If
             listJoueur(listJoueur.Length - 1) = joueur
         End If
     End Sub
+
+    Public Function getNomsJoueur() As String()
+        If Not listJoueur Is Nothing Then
+            Dim nomsJoueurs(listJoueur.Length - 1) As String
+            For i As Integer = 0 To listJoueur.Length - 1
+                nomsJoueurs(i) = listJoueur(i).prenom
+            Next
+            Return nomsJoueurs
+        End If
+    End Function
+
+    Public Function getListJoueur() As Joueur()
+        If Not listJoueur Is Nothing Then
+            Return listJoueur.Clone()
+        End If
+    End Function
+
+    Public Function getNbJoueur() As Integer
+        If listJoueur Is Nothing Then
+            Return 0
+        Else
+            Return listJoueur.Length
+        End If
+    End Function
 
     Public Sub Main()
         Try
@@ -89,30 +115,4 @@ Module Enregistrement
         End Try
         Application.Run(Accueil)
     End Sub
-
-
-    Public Function getNomsJoueur() As String()
-        If Not listJoueur Is Nothing Then
-            Dim nomsJoueurs(listJoueur.Length - 1) As String
-            For i As Integer = 0 To listJoueur.Length - 1
-                nomsJoueurs(i) = listJoueur(i).prenom
-            Next
-            Return nomsJoueurs
-        End If
-    End Function
-
-    Public Function getJoueur(i As Integer) As Joueur
-        Return listJoueur(i)
-    End Function
-
-    Public Function getListJ()
-        Return listJoueur
-    End Function
-    Public Function getNbJoueur() As Integer
-        If listJoueur Is Nothing Then
-            Return 0
-        Else
-            Return listJoueur.Length
-        End If
-    End Function
 End Module

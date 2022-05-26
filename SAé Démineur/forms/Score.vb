@@ -1,20 +1,35 @@
-﻿Public Class Score
+﻿Imports System.IO
 
-    'Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    'If Enregistrement.getNbJoueur() > 0 Then
-    'For i As Integer = 0 To Enregistrement.getNbJoueur() - 1
-    ' Dim j As Joueur = Enregistrement.getJoueur(i)
-    ' Nom.Items.Add(j.prenom)
-    'caseDecouv.Items.Add(j.nbCasesDecouvertes)
-    'nbParti.Items.Add(j.nbParti)
-    'temps.Items.Add(j.temps)
-    'ComboBox1.Items.Add(j.prenom)
-    'Next
-    'End If
-    ' End Sub
+Public Class Score
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Hide()
+    Private listJoueur() As Enregistrement.Joueur
+
+    Private Sub Score_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Nom.Items.Clear()
+
+        caseDecouv.Items.Clear()
+
+        temps.Items.Clear()
+
+        ComboBox1.Items.Clear()
+
+        listJoueur = ScoreTri.TriJoueur(Enregistrement.getListJoueur())
+
+        If Not listJoueur Is Nothing Then
+            For Each j As Enregistrement.Joueur In listJoueur
+                Nom.Items.Add(j.prenom)
+                caseDecouv.Items.Add(j.meilleurNbCasesDecouvertes)
+                temps.Items.Add(j.meilleurTemps)
+                ComboBox1.Items.Add(j.prenom)
+            Next
+        End If
+    End Sub
+
+    Private Sub LeaveButton_Click(sender As Object, e As EventArgs) Handles LeaveButton.Click
+        Me.Close()
+    End Sub
+
+    Private Sub Quit(sender As Object, e As EventArgs) Handles Me.Closed
         Accueil.Show()
     End Sub
 
@@ -24,46 +39,12 @@
         temps.SelectedIndex = sender.SelectedIndex
 
         ComboBox1.Text = Nom.SelectedItem
-
-
     End Sub
 
-    Private Sub Quit() Handles Me.Closed
-        Accueil.Show()
-    End Sub
-
-    Private Sub Score_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
-        ScoreTri.triJoueur(Enregistrement.getListJ)
-
-        Nom.Items.Clear()
-        Nom.Sorted() = True
-
-        caseDecouv.Items.Clear()
-        caseDecouv.Sorted() = True
-
-        temps.Items.Clear()
-        temps.Sorted() = True
-
-        ComboBox1.Items.Clear()
-        ComboBox1.Sorted() = True
-
-
-        If Enregistrement.getNbJoueur() > 0 Then
-            For i As Integer = 0 To Enregistrement.getNbJoueur() - 1
-                Dim j As Joueur = ScoreTri.getNouvelleListe(i)
-                Nom.Items.Add(j.prenom)
-                caseDecouv.Items.Add(j.meilleurNbCasesDecouvertes)
-                temps.Items.Add(j.meilleurTemps)
-                ComboBox1.Items.Add(j.prenom)
-            Next
-        End If
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub DetailButton_Click(sender As Object, e As EventArgs) Handles DetailButton.Click
         For i As Integer = 0 To Enregistrement.getNbJoueur() - 1
-            If ComboBox1.SelectedItem = Enregistrement.getJoueur(i).prenom Then
-                Dim j As Joueur = Enregistrement.getJoueur(i)
+            If ComboBox1.SelectedItem = listJoueur(i).prenom Then
+                Dim j As Joueur = listJoueur(i)
                 MsgBox("Nom :" & j.prenom & vbCrLf &
                        "Meilleur nombre de révélées : " & j.meilleurNbCasesDecouvertes & vbCrLf &
                        "Meilleur temps de partie : " & j.meilleurTemps & vbCrLf &
@@ -72,5 +53,4 @@
             End If
         Next
     End Sub
-
 End Class

@@ -79,7 +79,7 @@
     End Sub
 
     Private Sub Button_Click(sender As Button, e As MouseEventArgs)
-        Console.WriteLine(e.Button)
+        'Console.WriteLine(e.Button)
         If e.Button = MouseButtons.Left Then
             Dim casesADecouvrir() As Integer = Jeu.boutonClick(GroupBox1.Controls.IndexOf(sender))
             If (casesADecouvrir IsNot Nothing) Then
@@ -94,6 +94,7 @@
                             .Enabled = False
                         End With
                     Next
+                    Game_Is_Win()
                 Else
                     sender.BackColor = couleurBoutonExplosion
                     For i As Integer = 1 To casesADecouvrir.Length - 1
@@ -115,7 +116,6 @@
                 sender.BackgroundImage = Nothing
             End If
         End If
-        Game_Is_Win()
     End Sub
 
     Private Sub Game_End() Handles ExitButton.Click
@@ -136,7 +136,7 @@
         End If
 
         If (MsgBox(message, MsgBoxStyle.OkOnly, "Partie terminée") = MsgBoxResult.Ok) Then
-            Enregistrement.Enregistrer(Trim(StrConv(Accueil.ComboBox1.Text, vbProperCase)), nbCasesDecouvertes, tempsInitial - tempsRestant)
+            Enregistrement.AjoutResultatPartie(Trim(StrConv(Accueil.ComboBox1.Text, vbProperCase)), nbCasesDecouvertes, tempsInitial - tempsRestant)
             Accueil.Show()
             Me.Close()
         End If
@@ -147,8 +147,8 @@
         labelTimer.Text = tempsRestant
         If (tempsRestant <= 0) Then
             Timer1.Stop()
-            Game_End()
         End If
+        Game_Is_Win()
     End Sub
 
     Private Sub Game_Is_Win()
@@ -159,7 +159,7 @@
             End If
         Next
 
-        If (isWin) Then
+        If (isWin Or tempsRestant <= 0) Then
             Game_End()
         End If
     End Sub

@@ -20,15 +20,15 @@
         ScoresPath.Text = Parametres.getScoresPath()
 
         NbCasesScrollBar.Minimum = 3
-        NbCasesScrollBar.Maximum = 18
+        NbCasesScrollBar.Maximum = 18 + (NbCasesScrollBar.LargeChange - 1)
         NbCases.Enabled = False
 
         NbMinesScrollBar.Minimum = 1
-        NbMinesScrollBar.Maximum = (NbCasesScrollBar.Value * NbCasesScrollBar.Value) - 1
+        NbMinesScrollBar.Maximum = (NbCasesScrollBar.Value * NbCasesScrollBar.Value) + (NbCasesScrollBar.LargeChange - 1) - 1
         NbMines.Enabled = False
 
         TempsImpartisScrollBar.Minimum = 60
-        TempsImpartisScrollBar.Maximum = TempsImpartisScrollBar.Minimum * 5
+        TempsImpartisScrollBar.Maximum = (TempsImpartisScrollBar.Minimum * 5) + (TempsImpartisScrollBar.LargeChange - 1)
         TempsImpartis.Enabled = False
     End Sub
 
@@ -63,42 +63,18 @@
     End Sub
 
     Private Sub NbCasesScrollBar_Scroll(sender As Object, e As EventArgs) Handles NbCasesScrollBar.ValueChanged
-        If CInt(NbCases.Text) <> sender.Value Then
-            NbCases.Text = sender.Value
-            NbMinesScrollBar.Maximum = (NbCasesScrollBar.Value * NbCasesScrollBar.Value) - 1
-            If CInt(NbMines.Text) > NbMinesScrollBar.Maximum Then
-                NbMines.Text = NbMinesScrollBar.Maximum
-            End If
+        NbCases.Text = sender.Value
+        If NbMinesScrollBar.Value >= NbCasesScrollBar.Value * NbCasesScrollBar.Value Then
+            NbMinesScrollBar.Value = (NbCasesScrollBar.Value * NbCasesScrollBar.Value)
         End If
+        NbMinesScrollBar.Maximum = (NbCasesScrollBar.Value * NbCasesScrollBar.Value) + (NbMinesScrollBar.LargeChange - 1) - 1
     End Sub
 
     Private Sub NbMinesScrollBar_Scroll(sender As Object, e As EventArgs) Handles NbMinesScrollBar.ValueChanged
-        If CInt(NbMines.Text) <> sender.Value Then
-            NbMines.Text = sender.Value
-        End If
+        NbMines.Text = sender.Value
     End Sub
 
     Private Sub TempsImpartisScrollBar_Scroll(sender As Object, e As EventArgs) Handles TempsImpartisScrollBar.ValueChanged
-        If CInt(TempsImpartis.Text) <> sender.Value Then
-            TempsImpartis.Text = sender.Value
-        End If
-    End Sub
-
-    Private Sub NbCases_TextChanged(sender As Object, e As EventArgs)
-        If NbCasesScrollBar.Value <> CInt(NbCases.Text) Then
-            NbCasesScrollBar.Value = CInt(NbCases.Text)
-        End If
-    End Sub
-
-    Private Sub NbMines_TextChanged(sender As Object, e As EventArgs)
-        If NbMinesScrollBar.Value <> CInt(NbMines.Text) Then
-            NbMinesScrollBar.Value = CInt(NbMines.Text)
-        End If
-    End Sub
-
-    Private Sub TempsImpartis_TextChanged(sender As Object, e As EventArgs)
-        If TempsImpartisScrollBar.Value <> CInt(TempsImpartis.Text) Then
-            TempsImpartisScrollBar.Value = CInt(TempsImpartis.Text)
-        End If
+        TempsImpartis.Text = sender.Value
     End Sub
 End Class

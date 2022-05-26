@@ -58,7 +58,7 @@ Partial Class Options
         Me.GroupBox1.Controls.Add(Me.NbCasesScrollBar)
         Me.GroupBox1.Location = New System.Drawing.Point(40, 37)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(490, 326)
+        Me.GroupBox1.Size = New System.Drawing.Size(590, 326)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Jeu"
@@ -104,16 +104,22 @@ Partial Class Options
         'TempsImpartisScrollBar
         '
         Me.TempsImpartisScrollBar.Location = New System.Drawing.Point(202, 252)
+        Me.TempsImpartisScrollBar.Maximum = 300
+        Me.TempsImpartisScrollBar.Minimum = 60
         Me.TempsImpartisScrollBar.Name = "TempsImpartisScrollBar"
-        Me.TempsImpartisScrollBar.Size = New System.Drawing.Size(191, 26)
+        Me.TempsImpartisScrollBar.Size = New System.Drawing.Size(291, 26)
         Me.TempsImpartisScrollBar.TabIndex = 4
+        Me.TempsImpartisScrollBar.Value = 60
         '
         'NbMinesScrollBar
         '
         Me.NbMinesScrollBar.Location = New System.Drawing.Point(202, 182)
+        Me.NbMinesScrollBar.Maximum = 323
+        Me.NbMinesScrollBar.Minimum = 1
         Me.NbMinesScrollBar.Name = "NbMinesScrollBar"
-        Me.NbMinesScrollBar.Size = New System.Drawing.Size(191, 26)
+        Me.NbMinesScrollBar.Size = New System.Drawing.Size(291, 26)
         Me.NbMinesScrollBar.TabIndex = 3
+        Me.NbMinesScrollBar.Value = 1
         '
         'Label1
         '
@@ -128,10 +134,10 @@ Partial Class Options
         '
         Me.NbCasesScrollBar.LargeChange = 5
         Me.NbCasesScrollBar.Location = New System.Drawing.Point(202, 112)
-        Me.NbCasesScrollBar.Maximum = 28
+        Me.NbCasesScrollBar.Maximum = 18
         Me.NbCasesScrollBar.Minimum = 3
         Me.NbCasesScrollBar.Name = "NbCasesScrollBar"
-        Me.NbCasesScrollBar.Size = New System.Drawing.Size(191, 26)
+        Me.NbCasesScrollBar.Size = New System.Drawing.Size(291, 26)
         Me.NbCasesScrollBar.TabIndex = 1
         Me.NbCasesScrollBar.Value = 3
         '
@@ -141,7 +147,7 @@ Partial Class Options
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Location = New System.Drawing.Point(40, 410)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(490, 132)
+        Me.GroupBox2.Size = New System.Drawing.Size(590, 132)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Sauvegarde"
@@ -164,7 +170,7 @@ Partial Class Options
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(31, 596)
+        Me.Button2.Location = New System.Drawing.Point(40, 596)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(249, 86)
         Me.Button2.TabIndex = 7
@@ -173,7 +179,7 @@ Partial Class Options
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(293, 596)
+        Me.Button1.Location = New System.Drawing.Point(381, 596)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(249, 86)
         Me.Button1.TabIndex = 6
@@ -183,7 +189,7 @@ Partial Class Options
         'NbCases
         '
         Me.NbCases.AutoSize = True
-        Me.NbCases.Location = New System.Drawing.Point(422, 118)
+        Me.NbCases.Location = New System.Drawing.Point(522, 118)
         Me.NbCases.Name = "NbCases"
         Me.NbCases.Size = New System.Drawing.Size(18, 20)
         Me.NbCases.TabIndex = 12
@@ -192,7 +198,7 @@ Partial Class Options
         'NbMines
         '
         Me.NbMines.AutoSize = True
-        Me.NbMines.Location = New System.Drawing.Point(422, 188)
+        Me.NbMines.Location = New System.Drawing.Point(522, 188)
         Me.NbMines.Name = "NbMines"
         Me.NbMines.Size = New System.Drawing.Size(18, 20)
         Me.NbMines.TabIndex = 13
@@ -201,7 +207,7 @@ Partial Class Options
         'TempsImpartis
         '
         Me.TempsImpartis.AutoSize = True
-        Me.TempsImpartis.Location = New System.Drawing.Point(422, 258)
+        Me.TempsImpartis.Location = New System.Drawing.Point(522, 258)
         Me.TempsImpartis.Name = "TempsImpartis"
         Me.TempsImpartis.Size = New System.Drawing.Size(18, 20)
         Me.TempsImpartis.TabIndex = 14
@@ -211,7 +217,7 @@ Partial Class Options
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(578, 726)
+        Me.ClientSize = New System.Drawing.Size(678, 726)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox2)

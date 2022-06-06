@@ -1,6 +1,5 @@
 ﻿Public Class Accueil
     Private Sub Accueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Parametres.Init()
         If Enregistrement.getNbJoueur > 0 Then
             For Each nom As String In Enregistrement.getNomsJoueur()
                 ComboBox1.Items.Add(nom)

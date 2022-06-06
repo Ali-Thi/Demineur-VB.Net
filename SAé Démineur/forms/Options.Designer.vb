@@ -23,7 +23,9 @@ Partial Class Options
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.TempsImpartis = New System.Windows.Forms.Label()
+        Me.NbMines = New System.Windows.Forms.Label()
+        Me.NbCases = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -36,9 +38,8 @@ Partial Class Options
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.NbCases = New System.Windows.Forms.Label()
-        Me.NbMines = New System.Windows.Forms.Label()
-        Me.TempsImpartis = New System.Windows.Forms.Label()
+        Me.BrowseButton = New System.Windows.Forms.Button()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -48,7 +49,6 @@ Partial Class Options
         Me.GroupBox1.Controls.Add(Me.TempsImpartis)
         Me.GroupBox1.Controls.Add(Me.NbMines)
         Me.GroupBox1.Controls.Add(Me.NbCases)
-        Me.GroupBox1.Controls.Add(Me.CheckBox2)
         Me.GroupBox1.Controls.Add(Me.CheckBox1)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
@@ -63,15 +63,32 @@ Partial Class Options
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Jeu"
         '
-        'CheckBox2
+        'TempsImpartis
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(187, 48)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(113, 24)
-        Me.CheckBox2.TabIndex = 11
-        Me.CheckBox2.Text = "Dark Mode"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.TempsImpartis.AutoSize = True
+        Me.TempsImpartis.Location = New System.Drawing.Point(522, 258)
+        Me.TempsImpartis.Name = "TempsImpartis"
+        Me.TempsImpartis.Size = New System.Drawing.Size(18, 20)
+        Me.TempsImpartis.TabIndex = 14
+        Me.TempsImpartis.Text = "0"
+        '
+        'NbMines
+        '
+        Me.NbMines.AutoSize = True
+        Me.NbMines.Location = New System.Drawing.Point(522, 188)
+        Me.NbMines.Name = "NbMines"
+        Me.NbMines.Size = New System.Drawing.Size(18, 20)
+        Me.NbMines.TabIndex = 13
+        Me.NbMines.Text = "0"
+        '
+        'NbCases
+        '
+        Me.NbCases.AutoSize = True
+        Me.NbCases.Location = New System.Drawing.Point(522, 118)
+        Me.NbCases.Name = "NbCases"
+        Me.NbCases.Size = New System.Drawing.Size(18, 20)
+        Me.NbCases.TabIndex = 12
+        Me.NbCases.Text = "0"
         '
         'CheckBox1
         '
@@ -143,6 +160,7 @@ Partial Class Options
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.BrowseButton)
         Me.GroupBox2.Controls.Add(Me.ScoresPath)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Location = New System.Drawing.Point(40, 410)
@@ -186,32 +204,14 @@ Partial Class Options
         Me.Button1.Text = "Valider"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'NbCases
+        'BrowseButton
         '
-        Me.NbCases.AutoSize = True
-        Me.NbCases.Location = New System.Drawing.Point(522, 118)
-        Me.NbCases.Name = "NbCases"
-        Me.NbCases.Size = New System.Drawing.Size(18, 20)
-        Me.NbCases.TabIndex = 12
-        Me.NbCases.Text = "0"
-        '
-        'NbMines
-        '
-        Me.NbMines.AutoSize = True
-        Me.NbMines.Location = New System.Drawing.Point(522, 188)
-        Me.NbMines.Name = "NbMines"
-        Me.NbMines.Size = New System.Drawing.Size(18, 20)
-        Me.NbMines.TabIndex = 13
-        Me.NbMines.Text = "0"
-        '
-        'TempsImpartis
-        '
-        Me.TempsImpartis.AutoSize = True
-        Me.TempsImpartis.Location = New System.Drawing.Point(522, 258)
-        Me.TempsImpartis.Name = "TempsImpartis"
-        Me.TempsImpartis.Size = New System.Drawing.Size(18, 20)
-        Me.TempsImpartis.TabIndex = 14
-        Me.TempsImpartis.Text = "0"
+        Me.BrowseButton.Location = New System.Drawing.Point(418, 76)
+        Me.BrowseButton.Name = "BrowseButton"
+        Me.BrowseButton.Size = New System.Drawing.Size(93, 35)
+        Me.BrowseButton.TabIndex = 3
+        Me.BrowseButton.Text = "Parcourir"
+        Me.BrowseButton.UseVisualStyleBackColor = True
         '
         'Options
         '
@@ -240,7 +240,6 @@ Partial Class Options
     Friend WithEvents Label2 As Label
     Friend WithEvents TempsImpartisScrollBar As HScrollBar
     Friend WithEvents NbMinesScrollBar As HScrollBar
-    Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents ScoresPath As TextBox
@@ -250,4 +249,6 @@ Partial Class Options
     Friend WithEvents TempsImpartis As Label
     Friend WithEvents NbMines As Label
     Friend WithEvents NbCases As Label
+    Friend WithEvents BrowseButton As Button
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class

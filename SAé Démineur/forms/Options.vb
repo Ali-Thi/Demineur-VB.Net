@@ -2,13 +2,13 @@
 
     Private Sub Form_Load() Handles Me.Load
 
-        CheckBox1.Checked = Parametres.getAvecChrono()
+        CheckBox1.Checked = Parametres.GetAvecChrono()
 
-        NbCasesScrollBar.Value = Parametres.getNbRangees()
-        NbCases.Text = NbCasesScrollBar.Value
-        NbMinesScrollBar.Value = Parametres.getNbMines()
+        NbCasesScrollBar.Value = Parametres.GetNbRangees()
+        NbCases.Text = NbCasesScrollBar.Value.ToString & "x" & NbCasesScrollBar.Value.ToString
+        NbMinesScrollBar.Value = Parametres.GetNbMines()
         NbMines.Text = NbMinesScrollBar.Value
-        TempsImpartisScrollBar.Value = Parametres.getTempsImpartis()
+        TempsImpartisScrollBar.Value = Parametres.GetTempsImpartis()
         TempsImpartis.Text = TempsImpartisScrollBar.Value
 
         If Not CheckBox1.Checked Then
@@ -17,7 +17,8 @@
             TempsImpartis.Visible = False
         End If
 
-        ScoresPath.Text = Parametres.getScoresPath()
+        ScoresPath.Text = Parametres.GetScoresPath()
+        ScoresPath.Enabled = False
 
         NbCasesScrollBar.Minimum = 3
         NbCasesScrollBar.Maximum = 18 + (NbCasesScrollBar.LargeChange - 1)
@@ -33,11 +34,11 @@
     End Sub
 
     Private Sub Valider(sender As Object, e As EventArgs) Handles Button1.Click
-        Parametres.setNbRangees(NbCasesScrollBar.Value)
-        Parametres.setNbMines(NbMinesScrollBar.Value)
-        Parametres.setTempsImpartis(TempsImpartisScrollBar.Value)
-        Parametres.setAvecChrono(CheckBox1.Checked)
-        Parametres.setScoresPath(ScoresPath.Text)
+        Parametres.SetNbRangees(NbCasesScrollBar.Value)
+        Parametres.SetNbMines(NbMinesScrollBar.Value)
+        Parametres.SetTempsImpartis(TempsImpartisScrollBar.Value)
+        Parametres.SetAvecChrono(CheckBox1.Checked)
+        Parametres.SetScoresPath(ScoresPath.Text)
 
         Me.Close()
     End Sub
@@ -63,9 +64,9 @@
     End Sub
 
     Private Sub NbCasesScrollBar_Scroll(sender As Object, e As EventArgs) Handles NbCasesScrollBar.ValueChanged
-        NbCases.Text = sender.Value
+        NbCases.Text = NbCasesScrollBar.Value.ToString & "x" & NbCasesScrollBar.Value.ToString
         If NbMinesScrollBar.Value >= NbCasesScrollBar.Value * NbCasesScrollBar.Value Then
-            NbMinesScrollBar.Value = (NbCasesScrollBar.Value * NbCasesScrollBar.Value)
+            NbMinesScrollBar.Value = (NbCasesScrollBar.Value * NbCasesScrollBar.Value) - 1
         End If
         NbMinesScrollBar.Maximum = (NbCasesScrollBar.Value * NbCasesScrollBar.Value) + (NbMinesScrollBar.LargeChange - 1) - 1
     End Sub
@@ -76,5 +77,12 @@
 
     Private Sub TempsImpartisScrollBar_Scroll(sender As Object, e As EventArgs) Handles TempsImpartisScrollBar.ValueChanged
         TempsImpartis.Text = sender.Value
+    End Sub
+
+    Private Sub BrowseButton_Click(sender As Object, e As EventArgs) Handles BrowseButton.Click
+        Dim result As DialogResult = FolderBrowserDialog1.ShowDialog()
+        If (result = DialogResult.OK) Then
+            ScoresPath.Text = FolderBrowserDialog1.SelectedPath & "\"
+        End If
     End Sub
 End Class

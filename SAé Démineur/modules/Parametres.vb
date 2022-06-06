@@ -1,11 +1,11 @@
 ﻿Imports System.IO
 Module Parametres
 
-    Private nbRangees As Integer = 8
-    Private nbMines As Integer = 8
-    Private tempsImpartis As Integer = 60
-    Private avecChrono As Boolean = True
-    Private scoresPath As String = ""
+    Private nbRangees As Integer
+    Private nbMines As Integer
+    Private tempsImpartis As Integer
+    Private avecChrono As Boolean
+    Private scoresPath As String
 
     Public Sub Init()
         Try
@@ -35,43 +35,43 @@ Module Parametres
         file.Close()
     End Sub
 
-    Public Function getNbRangees() As Integer
+    Public Function GetNbRangees() As Integer
         Return nbRangees
     End Function
 
-    Public Function getNbMines() As Integer
+    Public Function GetNbMines() As Integer
         Return nbMines
     End Function
 
-    Public Function getTempsImpartis() As Integer
+    Public Function GetTempsImpartis() As Integer
         Return tempsImpartis
     End Function
 
-    Public Function getAvecChrono() As Boolean
+    Public Function GetAvecChrono() As Boolean
         Return avecChrono
     End Function
 
-    Public Function getScoresPath() As String
+    Public Function GetScoresPath() As String
         Return scoresPath
     End Function
 
-    Public Sub setNbRangees(i As Integer)
+    Public Sub SetNbRangees(i As Integer)
         nbRangees = i
     End Sub
 
-    Public Sub setNbMines(i As Integer)
+    Public Sub SetNbMines(i As Integer)
         nbMines = i
     End Sub
 
-    Public Sub setTempsImpartis(i As Integer)
+    Public Sub SetTempsImpartis(i As Integer)
         tempsImpartis = i
     End Sub
 
-    Public Sub setAvecChrono(i As Boolean)
+    Public Sub SetAvecChrono(i As Boolean)
         avecChrono = i
     End Sub
 
-    Public Sub setScoresPath(i As String)
+    Public Sub SetScoresPath(i As String)
         scoresPath = i
     End Sub
 

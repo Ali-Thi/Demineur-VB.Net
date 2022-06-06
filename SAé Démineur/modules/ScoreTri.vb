@@ -1,10 +1,6 @@
 ﻿Module ScoreTri
 
-    Public Function TriJoueur(listJoueur) As Enregistrement.Joueur()
-        For Each j As Joueur In listJoueur
-            Console.WriteLine(j.prenom)
-        Next
-        Console.WriteLine()
+    Public Function TriJoueur(listJoueur() As Enregistrement.Joueur) As Enregistrement.Joueur()
         If Not listJoueur Is Nothing Then
             If listJoueur.Length = 1 Then
                 Return listJoueur
@@ -36,7 +32,7 @@
 
                 For i As Integer = 0 To tabTrie.Length - 1
                     If idx1 < tab1.Length And idx2 < tab2.Length Then
-                        If (tab1(idx1).meilleurNbCasesDecouvertes > tab2(idx2).meilleurNbCasesDecouvertes) Or (tab1(idx1).meilleurNbCasesDecouvertes = tab2(idx2).meilleurNbCasesDecouvertes And tab1(idx1).meilleurTemps < tab2(idx2).meilleurTemps) Then
+                        If (tab1(idx1).meilleurNbCasesDecouvertes < tab2(idx2).meilleurNbCasesDecouvertes) Or (tab1(idx1).meilleurNbCasesDecouvertes = tab2(idx2).meilleurNbCasesDecouvertes And tab1(idx1).meilleurTemps < tab2(idx2).meilleurTemps) Then
                             tabTrie(i) = tab1(idx1)
                             idx1 += 1
                         Else

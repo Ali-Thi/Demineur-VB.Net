@@ -33,11 +33,11 @@ Partial Class Grille
         '
         'GroupBox1
         '
-        Me.GroupBox1.Location = New System.Drawing.Point(44, 39)
+        Me.GroupBox1.Location = New System.Drawing.Point(50, 49)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox1.Size = New System.Drawing.Size(533, 480)
+        Me.GroupBox1.Size = New System.Drawing.Size(600, 600)
         Me.GroupBox1.TabIndex = 72
         Me.GroupBox1.TabStop = False
         '
@@ -49,10 +49,10 @@ Partial Class Grille
         '
         Me.ReplayButton.BackgroundImage = CType(resources.GetObject("ReplayButton.BackgroundImage"), System.Drawing.Image)
         Me.ReplayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ReplayButton.Location = New System.Drawing.Point(604, 359)
+        Me.ReplayButton.Location = New System.Drawing.Point(680, 449)
         Me.ReplayButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ReplayButton.Name = "ReplayButton"
-        Me.ReplayButton.Size = New System.Drawing.Size(44, 39)
+        Me.ReplayButton.Size = New System.Drawing.Size(50, 50)
         Me.ReplayButton.TabIndex = 75
         Me.ReplayButton.UseVisualStyleBackColor = True
         '
@@ -61,10 +61,10 @@ Partial Class Grille
         Me.ExitButton.BackgroundImage = CType(resources.GetObject("ExitButton.BackgroundImage"), System.Drawing.Image)
         Me.ExitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ExitButton.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.ExitButton.Location = New System.Drawing.Point(604, 260)
+        Me.ExitButton.Location = New System.Drawing.Point(680, 325)
         Me.ExitButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ExitButton.Name = "ExitButton"
-        Me.ExitButton.Size = New System.Drawing.Size(44, 39)
+        Me.ExitButton.Size = New System.Drawing.Size(50, 50)
         Me.ExitButton.TabIndex = 74
         Me.ExitButton.UseVisualStyleBackColor = True
         '
@@ -72,25 +72,25 @@ Partial Class Grille
         '
         Me.PauseButton.BackgroundImage = CType(resources.GetObject("PauseButton.BackgroundImage"), System.Drawing.Image)
         Me.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PauseButton.Location = New System.Drawing.Point(604, 160)
+        Me.PauseButton.Location = New System.Drawing.Point(680, 200)
         Me.PauseButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PauseButton.Name = "PauseButton"
-        Me.PauseButton.Size = New System.Drawing.Size(44, 39)
+        Me.PauseButton.Size = New System.Drawing.Size(50, 50)
         Me.PauseButton.TabIndex = 73
         Me.PauseButton.UseVisualStyleBackColor = True
         '
         'Grille
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(683, 555)
+        Me.ClientSize = New System.Drawing.Size(768, 694)
         Me.Controls.Add(Me.ReplayButton)
         Me.Controls.Add(Me.ExitButton)
         Me.Controls.Add(Me.PauseButton)
         Me.Controls.Add(Me.GroupBox1)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Grille"
-        Me.Text = "Grille"
+        Me.Text = "Jeu"
         Me.ResumeLayout(False)
 
     End Sub

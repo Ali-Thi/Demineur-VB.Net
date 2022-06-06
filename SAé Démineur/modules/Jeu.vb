@@ -5,8 +5,8 @@
     Private casesDecouvertes(0, 0) As Boolean
 
     Public Sub MakeProblem()
-        nbRangees = Parametres.getNbRangees()
-        nbMines = Parametres.getNbMines()
+        nbRangees = Parametres.GetNbRangees()
+        nbMines = Parametres.GetNbMines()
         ReDim grille(nbRangees - 1, nbRangees - 1)
         ReDim casesDecouvertes(nbRangees - 1, nbRangees - 1)
 
@@ -37,7 +37,7 @@
         Next
     End Sub
 
-    Public Function boutonClick(indexBouton As Integer) As Integer()
+    Public Function BoutonClick(indexBouton As Integer) As Integer()
         Dim x As Integer = indexBouton \ nbRangees
         Dim y As Integer = indexBouton Mod nbRangees
         Dim retour() As Integer = {0, indexBouton}
@@ -62,7 +62,7 @@
                         For Each j As Integer In {y - 1, y, y + 1}
                             If (j >= 0 And i >= 0 And j < nbRangees And i < nbRangees And Not (j = y And i = x)) Then
                                 If (Not casesDecouvertes(i, j)) Then
-                                    retourRecursif = boutonClick(i * nbRangees + j)
+                                    retourRecursif = BoutonClick(i * nbRangees + j)
                                     If (retourRecursif IsNot Nothing) Then
                                         For k As Integer = 1 To retourRecursif.Length - 1
                                             ReDim Preserve retour(retour.Length)
@@ -79,28 +79,28 @@
         Return retour
     End Function
 
-    Private Function getXFromIndex(index As Integer)
+    Private Function GetXFromIndex(index As Integer)
         Return index \ nbRangees
     End Function
 
-    Private Function getYFromIndex(index As Integer)
+    Private Function GetYFromIndex(index As Integer)
         Return index Mod nbRangees
     End Function
 
-    Public Function getNbRangees() As Integer
+    Public Function GetNbRangees() As Integer
         Return nbRangees
     End Function
 
-    Public Function getNbMines() As Integer
+    Public Function GetNbMines() As Integer
         Return nbMines
     End Function
 
-    Public Function getGrilleI(index As Integer) As Integer
-        Return grille(getXFromIndex(index), getYFromIndex(index))
+    Public Function GetGrilleI(index As Integer) As Integer
+        Return grille(GetXFromIndex(index), GetYFromIndex(index))
     End Function
 
-    Public Function getCaseEstDecouvert(index As Integer) As Integer
-        Return casesDecouvertes(getXFromIndex(index), getYFromIndex(index))
+    Public Function GetCaseEstDecouvert(index As Integer) As Integer
+        Return casesDecouvertes(GetXFromIndex(index), GetYFromIndex(index))
     End Function
 
 End Module

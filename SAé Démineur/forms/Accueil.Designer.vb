@@ -33,6 +33,8 @@ Partial Class Accueil
         '
         'ComboBox1
         '
+        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(284, 172)
         Me.ComboBox1.Name = "ComboBox1"
@@ -108,7 +110,7 @@ Partial Class Accueil
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Name = "Accueil"
-        Me.Text = "Form1"
+        Me.Text = "Accueil"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

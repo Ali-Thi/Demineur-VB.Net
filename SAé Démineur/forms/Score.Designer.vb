@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Score
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,17 +20,18 @@ Partial Class Score
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Nom = New System.Windows.Forms.ListBox()
-        Me.caseDecouv = New System.Windows.Forms.ListBox()
-        Me.temps = New System.Windows.Forms.ListBox()
+        Me.BestNbCasesDecouv = New System.Windows.Forms.ListBox()
+        Me.BestTemps = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LeaveButton = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.DetailButton = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Nom
@@ -43,25 +44,25 @@ Partial Class Score
         Me.Nom.Size = New System.Drawing.Size(178, 404)
         Me.Nom.TabIndex = 0
         '
-        'caseDecouv
+        'BestNbCasesDecouv
         '
-        Me.caseDecouv.FormattingEnabled = True
-        Me.caseDecouv.ItemHeight = 20
-        Me.caseDecouv.Location = New System.Drawing.Point(314, 122)
-        Me.caseDecouv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.caseDecouv.Name = "caseDecouv"
-        Me.caseDecouv.Size = New System.Drawing.Size(178, 404)
-        Me.caseDecouv.TabIndex = 1
+        Me.BestNbCasesDecouv.FormattingEnabled = True
+        Me.BestNbCasesDecouv.ItemHeight = 20
+        Me.BestNbCasesDecouv.Location = New System.Drawing.Point(314, 122)
+        Me.BestNbCasesDecouv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.BestNbCasesDecouv.Name = "BestNbCasesDecouv"
+        Me.BestNbCasesDecouv.Size = New System.Drawing.Size(178, 404)
+        Me.BestNbCasesDecouv.TabIndex = 1
         '
-        'temps
+        'BestTemps
         '
-        Me.temps.FormattingEnabled = True
-        Me.temps.ItemHeight = 20
-        Me.temps.Location = New System.Drawing.Point(606, 122)
-        Me.temps.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.temps.Name = "temps"
-        Me.temps.Size = New System.Drawing.Size(178, 404)
-        Me.temps.TabIndex = 3
+        Me.BestTemps.FormattingEnabled = True
+        Me.BestTemps.ItemHeight = 20
+        Me.BestTemps.Location = New System.Drawing.Point(606, 122)
+        Me.BestTemps.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.BestTemps.Name = "BestTemps"
+        Me.BestTemps.Size = New System.Drawing.Size(178, 404)
+        Me.BestTemps.TabIndex = 3
         '
         'Label1
         '
@@ -115,6 +116,7 @@ Partial Class Score
         Me.ComboBox1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(136, 28)
+        Me.ComboBox1.Sorted = True
         Me.ComboBox1.TabIndex = 11
         '
         'DetailButton
@@ -127,38 +129,50 @@ Partial Class Score
         Me.DetailButton.Text = "Détail"
         Me.DetailButton.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.AutoSize = True
+        Me.Button1.Location = New System.Drawing.Point(860, 351)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(220, 30)
+        Me.Button1.TabIndex = 13
+        Me.Button1.Text = "Ordre décroissant"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Score
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.ClientSize = New System.Drawing.Size(1200, 692)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DetailButton)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.LeaveButton)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.temps)
-        Me.Controls.Add(Me.caseDecouv)
+        Me.Controls.Add(Me.BestTemps)
+        Me.Controls.Add(Me.BestNbCasesDecouv)
         Me.Controls.Add(Me.Nom)
         Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "Score"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Score"
+        Me.Text = "Tableau des scores"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Nom As ListBox
-    Friend WithEvents caseDecouv As ListBox
-    Friend WithEvents temps As ListBox
+    Friend WithEvents BestNbCasesDecouv As ListBox
+    Friend WithEvents BestTemps As ListBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents LeaveButton As Button
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents DetailButton As Button
+    Friend WithEvents Button1 As Button
 End Class

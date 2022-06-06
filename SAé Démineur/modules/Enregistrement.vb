@@ -94,6 +94,7 @@ Module Enregistrement
     End Function
 
     Public Sub Main()
+        Parametres.Init()
         Try
             Dim file As New StreamReader(Parametres.getScoresPath() + "Enregistrement.txt")
             ReDim listJoueur(file.ReadLine() - 1)

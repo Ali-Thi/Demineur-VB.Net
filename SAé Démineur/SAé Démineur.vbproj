@@ -128,9 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Options.resx">
       <DependentUpon>Options.vb</DependentUpon>
@@ -152,8 +152,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\bombe.png" />
     <Content Include="assets\drapeau.png" />
     <Content Include="assets\exit_icon.png" />
+    <Content Include="assets\fleche.png" />
     <Content Include="assets\replay_icon.png" />
     <Content Include="assets\stop_icon.png" />
   </ItemGroup>
